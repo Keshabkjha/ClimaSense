@@ -7,5 +7,3 @@ enableXsrfProtection = false
 [theme]
 base = "dark"
 primaryColor = "#4B8BBE"
-
-[global]
