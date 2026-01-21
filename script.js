@@ -19,6 +19,8 @@ const p = document.getElementById('p1');
 const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
+const chatbotFrame = document.getElementById('chatbotFrame');
+const chatbotBaseUrl = (chatbotFrame && chatbotFrame.getAttribute('src')) || 'https://kweatherapp.streamlit.app/';
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
@@ -126,7 +128,10 @@ function fetchWeather(url) {
             fetchUVIndex(data.coord.lat, data.coord.lon);
 
             // Update background image based on weather
-            updateBackgroundImage(weather);
+            updateBackgroundImage(weather, data.weather[0].description);
+
+            const chatbotLocation = data.sys && data.sys.country ? `${data.name}, ${data.sys.country}` : data.name;
+            updateChatbotLocation(chatbotLocation);
 
             toggleLoading(false); // Hide loading spinner
         })
@@ -153,6 +158,15 @@ function fetchUVIndex(lat, lon) {
             // @ts-ignore
             uvIndexElement.textContent = 'UV Index: N/A';
         });
+}
+
+function updateChatbotLocation(location) {
+    if (!chatbotFrame || !chatbotBaseUrl || !location) {
+        return;
+    }
+    const url = new URL(chatbotBaseUrl, window.location.href);
+    url.searchParams.set('location', location);
+    chatbotFrame.src = url.toString();
 }
 
 // Toggle the chatbot interface when the button is clicked
@@ -182,13 +196,21 @@ function formatTime(unixTimestamp) {
 }
 
 // Function to update background image based on weather
-function updateBackgroundImage(weather) {
+function updateBackgroundImage(weather, description) {
+    const normalizedDescription = description ? description.toLowerCase() : '';
     switch (weather) {
         case 'clear':
             document.body.style.backgroundImage = "url('clear.jpg')";
             break;
         case 'clouds':
-            document.body.style.backgroundImage = "url('clouds.jpg')";
+            if (normalizedDescription.includes('few') || normalizedDescription.includes('scattered')) {
+                document.body.style.backgroundImage = "url('cloud.jpg')";
+            } else {
+                document.body.style.backgroundImage = "url('clouds.jpg')";
+            }
+            break;
+        case 'drizzle':
+            document.body.style.backgroundImage = "url('drizzle.jpg')";
             break;
         case 'rain':
             document.body.style.backgroundImage = "url('rain.jpg')";
@@ -199,10 +221,32 @@ function updateBackgroundImage(weather) {
         case 'thunderstorm':
             document.body.style.backgroundImage = "url('thunderstorm.jpg')";
             break;
+        case 'squall':
+            document.body.style.backgroundImage = "url('squall.jpg')";
+            break;
+        case 'tornado':
+            document.body.style.backgroundImage = "url('tornado.jpg')";
+            break;
         case 'fog':
-        case 'mist':
-        case 'haze':
             document.body.style.backgroundImage = "url('fog.jpg')";
+            break;
+        case 'mist':
+            document.body.style.backgroundImage = "url('mist.jpg')";
+            break;
+        case 'haze':
+            document.body.style.backgroundImage = "url('haze.jpg')";
+            break;
+        case 'smoke':
+            document.body.style.backgroundImage = "url('smoke.jpg')";
+            break;
+        case 'dust':
+            document.body.style.backgroundImage = "url('dust.jpg')";
+            break;
+        case 'sand':
+            document.body.style.backgroundImage = "url('sand.jpg')";
+            break;
+        case 'ash':
+            document.body.style.backgroundImage = "url('ash.jpg')";
             break;
         default:
             document.body.style.backgroundImage = "url('default.jpg')";
