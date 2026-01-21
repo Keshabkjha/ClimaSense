@@ -17,7 +17,8 @@ const uvIndexElement = document.getElementById('uv-index');
 const loadingSpinner = document.getElementById('loadingSpinner');
 const p = document.getElementById('p1');
 const chatbotButton = document.getElementById('chatbotButton');
-const chatbotUrl = 'https://kweatherapp.streamlit.app/';
+const chatbotPanel = document.getElementById('chatbot-panel');
+const chatbotClose = document.getElementById('chatbotClose');
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
@@ -155,10 +156,24 @@ function fetchUVIndex(lat, lon) {
 }
 
 // Toggle the chatbot interface when the button is clicked
+function setChatbotOpen(isOpen) {
+    if (!chatbotPanel || !chatbotButton) {
+        return;
+    }
+    chatbotPanel.classList.toggle('is-open', isOpen);
+    chatbotPanel.setAttribute('aria-hidden', (!isOpen).toString());
+    chatbotButton.setAttribute('aria-expanded', isOpen.toString());
+}
+
 if (chatbotButton) {
     chatbotButton.addEventListener('click', () => {
-        window.open(chatbotUrl, '_blank', 'noopener,noreferrer');
+        const isOpen = chatbotPanel?.classList.contains('is-open');
+        setChatbotOpen(!isOpen);
     });
+}
+
+if (chatbotClose) {
+    chatbotClose.addEventListener('click', () => setChatbotOpen(false));
 }
 // Function to format Unix timestamp to human-readable time
 function formatTime(unixTimestamp) {

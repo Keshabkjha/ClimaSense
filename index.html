@@ -34,9 +34,16 @@
     </div>
     <!-- Chatbot Icon -->
     <div id="chatbot-container">
-        <button id="chatbotButton" type="button" aria-label="Open Chatbot">
+        <button id="chatbotButton" type="button" aria-label="Open Chatbot" aria-expanded="false" aria-controls="chatbot-panel">
             <img src="chatbot-icon.png" alt="Chatbot Icon" id="chatbotIcon">
         </button>
+    </div>
+    <div id="chatbot-panel" aria-hidden="true">
+        <div class="chatbot-header">
+            <span>Chatbot</span>
+            <button id="chatbotClose" type="button" aria-label="Close Chatbot">&times;</button>
+        </div>
+        <iframe id="chatbotFrame" title="ClimaSense Chatbot" src="https://kweatherapp.streamlit.app/"></iframe>
     </div>
 
     <!-- Footer Section -->
