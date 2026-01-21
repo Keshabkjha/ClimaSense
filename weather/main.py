@@ -32,7 +32,7 @@ if place:
                 "Clouds": "images/cloud.png",
                 "Rain": "images/rain.png",
                 "Snow": "images/snow.png",
-                "Drizzle": "images/rain.png",
+                "Drizzle": "images/drizzle.png",
                 "Thunderstorm": "images/rain.png",
                 "Mist": "images/cloud.png",
                 "Fog": "images/cloud.png",
@@ -41,8 +41,8 @@ if place:
                 "Dust": "images/cloud.png",
                 "Sand": "images/cloud.png",
                 "Ash": "images/cloud.png",
-                "Squall": "images/rain.png",
-                "Tornado": "images/rain.png",
+                "Squall": "images/squall.png",
+                "Tornado": "images/tornado.png",
             }
             sky_conditions = [dict["weather"][0]["main"] for dict in filtered_data]
             dates = [dict["dt_txt"] for dict in filtered_data]

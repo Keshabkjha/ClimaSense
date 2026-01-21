@@ -20,7 +20,7 @@ const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
 const chatbotFrame = document.getElementById('chatbotFrame');
-const chatbotBaseUrl = chatbotFrame ? chatbotFrame.getAttribute('src') : '';
+const chatbotBaseUrl = (chatbotFrame && chatbotFrame.getAttribute('src')) || 'https://kweatherapp.streamlit.app/';
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
