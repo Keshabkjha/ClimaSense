@@ -179,7 +179,7 @@ footer {
     opacity: 0;
     pointer-events: none;
     transition: transform 0.25s ease, opacity 0.25s ease;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 #chatbot-panel.is-open {

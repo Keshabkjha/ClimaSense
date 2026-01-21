@@ -167,7 +167,7 @@ function setChatbotOpen(isOpen) {
 
 if (chatbotButton) {
     chatbotButton.addEventListener('click', () => {
-        const isOpen = chatbotPanel?.classList.contains('is-open');
+        const isOpen = chatbotPanel && chatbotPanel.classList.contains('is-open');
         setChatbotOpen(!isOpen);
     });
 }
