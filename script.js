@@ -228,13 +228,25 @@ function updateBackgroundImage(weather, description) {
             document.body.style.backgroundImage = "url('tornado.jpg')";
             break;
         case 'fog':
-        case 'mist':
-        case 'haze':
-        case 'smoke':
-        case 'dust':
-        case 'sand':
-        case 'ash':
             document.body.style.backgroundImage = "url('fog.jpg')";
+            break;
+        case 'mist':
+            document.body.style.backgroundImage = "url('mist.jpg')";
+            break;
+        case 'haze':
+            document.body.style.backgroundImage = "url('haze.jpg')";
+            break;
+        case 'smoke':
+            document.body.style.backgroundImage = "url('smoke.jpg')";
+            break;
+        case 'dust':
+            document.body.style.backgroundImage = "url('dust.jpg')";
+            break;
+        case 'sand':
+            document.body.style.backgroundImage = "url('sand.jpg')";
+            break;
+        case 'ash':
+            document.body.style.backgroundImage = "url('ash.jpg')";
             break;
         default:
             document.body.style.backgroundImage = "url('default.jpg')";
