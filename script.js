@@ -164,7 +164,10 @@ function updateChatbotLocation(location) {
     if (!chatbotLink || !chatbotBaseUrl) {
         return;
     }
-    const normalizedLocation = (location || '').replace(/\s*,\s*/g, ',').trim();
+    const normalizedLocation = (location || '')
+        .replace(/\s+/g, ' ')
+        .replace(/\s*,\s*/g, ',')
+        .trim();
     if (!normalizedLocation) {
         return;
     }
