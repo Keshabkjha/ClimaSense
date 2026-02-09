@@ -20,7 +20,7 @@ const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
 const chatbotLink = document.getElementById('chatbotLink');
-const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || 'https://kweatherapp.streamlit.app/?embed=true';
+const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || 'https://kweatherapp.streamlit.app/';
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
@@ -161,10 +161,10 @@ function fetchUVIndex(lat, lon) {
 }
 
 function updateChatbotLocation(location) {
-    if (!chatbotLink || !chatbotBaseUrl || !location) {
+    if (!chatbotLink || !chatbotBaseUrl) {
         return;
     }
-    const normalizedLocation = location.replace(/\s*,\s*/g, ',').trim();
+    const normalizedLocation = (location || '').replace(/\s*,\s*/g, ',').trim();
     if (!normalizedLocation) {
         return;
     }
