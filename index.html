@@ -34,16 +34,19 @@
     </div>
     <!-- Chatbot Icon -->
     <div id="chatbot-container">
-        <button id="chatbotButton" type="button" aria-label="Open Chatbot" aria-expanded="false" aria-controls="chatbot-panel">
-            <img src="chatbot-icon.png" alt="Chatbot Icon" id="chatbotIcon">
+        <button id="chatbotButton" type="button" aria-label="Open Weather Bot" aria-expanded="false" aria-controls="chatbot-panel">
+            <img src="chatbot-icon.png" alt="Weather Bot Icon" id="chatbotIcon">
         </button>
     </div>
     <div id="chatbot-panel" aria-hidden="true">
         <div class="chatbot-header">
-            <span>Chatbot</span>
-            <button id="chatbotClose" type="button" aria-label="Close Chatbot">&times;</button>
+            <span>Weather Bot</span>
+            <button id="chatbotClose" type="button" aria-label="Close Weather Bot">&times;</button>
         </div>
-        <iframe id="chatbotFrame" title="ClimaSense Chatbot" src="https://kweatherapp.streamlit.app/"></iframe>
+        <div class="chatbot-body">
+            <p>Weather Bot opens in a new tab for the best experience.</p>
+            <a id="chatbotLink" href="https://kweatherapp.streamlit.app/" target="_blank" rel="noopener noreferrer">Open Weather Bot</a>
+        </div>
     </div>
 
     <!-- Footer Section -->

@@ -19,8 +19,8 @@ const p = document.getElementById('p1');
 const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
-const chatbotFrame = document.getElementById('chatbotFrame');
-const chatbotBaseUrl = (chatbotFrame && chatbotFrame.getAttribute('src')) || 'https://kweatherapp.streamlit.app/';
+const chatbotLink = document.getElementById('chatbotLink');
+const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || 'https://kweatherapp.streamlit.app/';
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
@@ -161,12 +161,19 @@ function fetchUVIndex(lat, lon) {
 }
 
 function updateChatbotLocation(location) {
-    if (!chatbotFrame || !chatbotBaseUrl || !location) {
+    if (!chatbotLink || !chatbotBaseUrl) {
+        return;
+    }
+    const normalizedLocation = (location || '')
+        .replace(/\s+/g, ' ')
+        .replace(/\s*,\s*/g, ',')
+        .trim();
+    if (!normalizedLocation) {
         return;
     }
     const url = new URL(chatbotBaseUrl, window.location.href);
-    url.searchParams.set('location', location);
-    chatbotFrame.src = url.toString();
+    url.searchParams.set('location', normalizedLocation);
+    chatbotLink.href = url.toString();
 }
 
 // Toggle the chatbot interface when the button is clicked

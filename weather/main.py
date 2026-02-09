@@ -3,7 +3,7 @@ import plotly.express as px
 from backend import get_data
 
 # Add title, text input, slider, select box, and sub header
-st.title("Weather Forecast for the Next Days")
+st.title("Weather Bot")
 default_place = st.query_params.get("location", "")
 if isinstance(default_place, list):
     default_place = default_place[0] if default_place else ""
