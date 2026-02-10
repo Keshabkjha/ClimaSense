@@ -1,0 +1,9 @@
+
+{
+  "name": "SkyScope Weather Intelligence",
+  "description": "An industry-standard conversational weather assistant powered by Gemini. Features real-time search grounding, interactive charts, and intelligent travel/clothing recommendations.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone"
+  ]
+}

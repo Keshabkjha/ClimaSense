@@ -20,7 +20,7 @@ const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
 const chatbotLink = document.getElementById('chatbotLink');
-const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || 'https://kweatherapp.streamlit.app/';
+const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || 'https://keshabkjhaweatherapp.streamlit.app/';
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
