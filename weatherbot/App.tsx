@@ -219,9 +219,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+    <div className={`fixed z-50 flex flex-col font-sans ${isEmbedded ? 'inset-0 items-stretch' : 'bottom-6 right-6 items-end'}`}>
       {/* Chat Window */}
-      <div className={`${isEmbedded ? 'mb-0' : 'mb-4'} w-[90vw] md:w-[450px] h-[700px] max-h-[85vh] flex flex-col glass rounded-3xl shadow-2xl transition-all duration-300 origin-bottom-right overflow-hidden ${
+      <div className={`${isEmbedded ? 'mb-0 w-full h-full max-h-full rounded-none' : 'mb-4 w-[90vw] md:w-[450px] h-[700px] max-h-[85vh] rounded-3xl'} flex flex-col glass shadow-2xl transition-all duration-300 origin-bottom-right overflow-hidden ${
         isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
       }`}>
         {/* Header */}
