@@ -155,6 +155,8 @@ footer {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+    display: block;
+    object-fit: cover;
     transition: transform 0.3s ease;
 }
 
@@ -204,6 +206,7 @@ footer {
     padding: 0;
     display: flex;
     flex-direction: column;
+    min-height: 0;
     font-size: 14px;
     color: #333;
 }
@@ -233,6 +236,8 @@ footer {
     border: none;
     width: 100%;
     height: 100%;
+    flex: 1;
+    min-height: 0;
     background: #fff;
 }
 
