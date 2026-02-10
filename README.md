@@ -1,13 +1,13 @@
 # ClimaSense
 
-Welcome to the ClimaSense! This is a simple and intuitive web application that provides real-time weather information based on your current location or any manually searched location. The app is built using HTML, CSS, JavaScript, Python (for chatbot functionality), and the OpenWeatherMap API.
+Welcome to the ClimaSense! This is a simple and intuitive web application that provides real-time weather information based on your current location or any manually searched location. The app is built using HTML, CSS, JavaScript, an embedded Weather Bot from https://skyscope-phi.vercel.app/, and the OpenWeatherMap API.
 
 ## Features
 
 - **Automatic Location Detection:** The app requests access to your current location and automatically displays the weather information for that location.
 - **Manual Search:** If you want to check the weather for a different location, simply enter the city name in the search bar.
 - **Real-Time Data:** The app fetches up-to-date weather data from the OpenWeatherMap API, ensuring you get the latest information.
-- **Chatbot:** The app includes a chatbot called Weather Bot, built using Python frameworks like Streamlit and SpaCy. Weather Bot responds to user queries about weather conditions in specific locations and displays real-time information directly in the app.
+- **Chatbot:** The app includes an embedded Weather Bot from https://skyscope-phi.vercel.app/. It responds to user queries about weather conditions in specific locations and displays real-time information directly in the app.
 
 ## Live Demo
 
@@ -26,28 +26,20 @@ To run this project locally:
     cd ClimaSense
     ```
 3. Open `index.html` in your web browser.
-4. To run the chatbot:
-    - Install the required Python packages for Streamlit and SpaCy:
-      ```bash
-      pip install -r weather/requirements.txt
-      ```
-    - Run the chatbot using Streamlit:
-      ```bash
-      streamlit run weather/main.py
-      ```
+4. The Weather Bot is embedded from https://skyscope-phi.vercel.app/ (no extra setup required). For local bot development, see [`weatherbot/README.md`](weatherbot/README.md).
 
 ## Usage
 
 - **Automatic Weather Display:** Upon opening the app, it will ask for permission to access your location. Once granted, it will automatically display the current weather information for your location.
 - **Manual Weather Search:** Enter the name of any city in the search bar to retrieve the weather details for that location.
-- **Weather Bot:** You can interact with the Weather Bot by asking weather-related questions for different cities, and it will provide real-time weather information using the OpenWeatherMap API.
+- **Weather Bot:** You can interact with the Weather Bot directly in the app by asking weather-related questions for different cities, and it will provide real-time weather information using the OpenWeatherMap API.
 
 ## Technologies Used
 
 - **HTML:** For structuring the app's content.
 - **CSS:** For styling the user interface.
 - **JavaScript:** For handling user interactions and making API requests.
-- **Python (Streamlit & SpaCy):** For building the Weather Bot.
+- **React + TypeScript:** For building the Weather Bot.
 - **OpenWeatherMap API:** For fetching real-time weather data.
 
 ## Terms of Use

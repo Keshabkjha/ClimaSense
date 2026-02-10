@@ -19,8 +19,8 @@ const p = document.getElementById('p1');
 const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
-const chatbotLink = document.getElementById('chatbotLink');
-const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || 'https://keshabkjhaweatherapp.streamlit.app/';
+const chatbotFrame = document.getElementById('chatbotFrame');
+const chatbotBaseUrl = (chatbotFrame && chatbotFrame.getAttribute('src')) || 'https://skyscope-phi.vercel.app/';
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
@@ -161,7 +161,7 @@ function fetchUVIndex(lat, lon) {
 }
 
 function updateChatbotLocation(location) {
-    if (!chatbotLink || !chatbotBaseUrl) {
+    if (!chatbotFrame || !chatbotBaseUrl) {
         return;
     }
     const normalizedLocation = (location || '')
@@ -173,7 +173,7 @@ function updateChatbotLocation(location) {
     }
     const url = new URL(chatbotBaseUrl, window.location.href);
     url.searchParams.set('location', normalizedLocation);
-    chatbotLink.href = url.toString();
+    chatbotFrame.src = url.toString();
 }
 
 // Toggle the chatbot interface when the button is clicked
