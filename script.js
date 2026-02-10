@@ -20,7 +20,6 @@ const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
 const chatbotLink = document.getElementById('chatbotLink');
-const chatbotBaseUrl = chatbotLink ? chatbotLink.getAttribute('href') : null;
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
@@ -161,7 +160,11 @@ function fetchUVIndex(lat, lon) {
 }
 
 function updateChatbotLocation(location) {
-    if (!chatbotLink || !chatbotBaseUrl) {
+    if (!chatbotLink) {
+        return;
+    }
+    const chatbotBaseUrl = chatbotLink.getAttribute('href');
+    if (!chatbotBaseUrl) {
         return;
     }
     const normalizedLocation = (location || '')
