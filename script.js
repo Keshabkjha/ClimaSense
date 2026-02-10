@@ -20,7 +20,7 @@ const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
 const chatbotLink = document.getElementById('chatbotLink');
-const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || 'https://ai.studio/apps/drive/1OXbho8dJQWSXIv5ztMYrCu5sdnfyBZea';
+const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || '';
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
