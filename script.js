@@ -20,7 +20,7 @@ const chatbotButton = document.getElementById('chatbotButton');
 const chatbotPanel = document.getElementById('chatbot-panel');
 const chatbotClose = document.getElementById('chatbotClose');
 const chatbotLink = document.getElementById('chatbotLink');
-const chatbotBaseUrl = (chatbotLink && chatbotLink.getAttribute('href')) || '';
+const chatbotBaseUrl = chatbotLink ? chatbotLink.getAttribute('href') : null;
 // Function to show/hide loading spinner
 function toggleLoading(show) {
     // @ts-ignore
