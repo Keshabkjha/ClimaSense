@@ -32,7 +32,9 @@ const getInitialMessages = (): WeatherMessage[] => [
 ];
 
 const App: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const embedParam = new URLSearchParams(window.location.search).get('embed');
+  const isEmbedded = embedParam === '1' || embedParam === 'true';
+  const [isOpen, setIsOpen] = useState(isEmbedded);
   const [view, setView] = useState<'chat' | 'map'>('chat');
   const [activeAlert, setActiveAlert] = useState<WeatherMessage | null>(null);
   const [unit, setUnit] = useState<TemperatureUnit>(() => {
@@ -219,7 +221,7 @@ const App: React.FC = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
       {/* Chat Window */}
-      <div className={`mb-4 w-[90vw] md:w-[450px] h-[700px] max-h-[85vh] flex flex-col glass rounded-3xl shadow-2xl transition-all duration-300 origin-bottom-right overflow-hidden ${
+      <div className={`${isEmbedded ? 'mb-0' : 'mb-4'} w-[90vw] md:w-[450px] h-[700px] max-h-[85vh] flex flex-col glass rounded-3xl shadow-2xl transition-all duration-300 origin-bottom-right overflow-hidden ${
         isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'
       }`}>
         {/* Header */}
@@ -261,9 +263,11 @@ const App: React.FC = () => {
                 {unit === 'Celsius' ? '°C' : '°F'}
               </span>
             </button>
-            <button onClick={() => setIsOpen(false)} className="p-2 text-slate-400 hover:text-white transition-colors">
-              <Lucide.X className="w-5 h-5" />
-            </button>
+            {!isEmbedded && (
+              <button onClick={() => setIsOpen(false)} className="p-2 text-slate-400 hover:text-white transition-colors">
+                <Lucide.X className="w-5 h-5" />
+              </button>
+            )}
           </div>
         </header>
 
@@ -339,28 +343,30 @@ const App: React.FC = () => {
       </div>
 
       {/* Launcher Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`group p-4 rounded-full shadow-2xl transition-all duration-300 flex items-center justify-center ${
-          isOpen ? 'bg-slate-800 rotate-90 scale-90' : 'bg-blue-600 hover:bg-blue-500 hover:scale-110'
-        }`}
-      >
-        {isOpen ? (
-          <Lucide.ChevronDown className="w-7 h-7 text-white" />
-        ) : (
-          <div className="relative">
-            <Lucide.MessageSquareText className="w-7 h-7 text-white" />
-            {!activeAlert && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-blue-600 rounded-full animate-pulse"></span>}
-            {activeAlert && (
-              <span className={`absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white flex items-center justify-center animate-bounce ${
-                activeAlert.alertType === 'danger' ? 'bg-red-500' : 'bg-amber-500'
-              }`}>
-                <Lucide.AlertTriangle className="w-2 h-2 text-white" />
-              </span>
-            )}
-          </div>
-        )}
-      </button>
+      {!isEmbedded && (
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={`group p-4 rounded-full shadow-2xl transition-all duration-300 flex items-center justify-center ${
+            isOpen ? 'bg-slate-800 rotate-90 scale-90' : 'bg-blue-600 hover:bg-blue-500 hover:scale-110'
+          }`}
+        >
+          {isOpen ? (
+            <Lucide.ChevronDown className="w-7 h-7 text-white" />
+          ) : (
+            <div className="relative">
+              <Lucide.MessageSquareText className="w-7 h-7 text-white" />
+              {!activeAlert && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 border-2 border-blue-600 rounded-full animate-pulse"></span>}
+              {activeAlert && (
+                <span className={`absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white flex items-center justify-center animate-bounce ${
+                  activeAlert.alertType === 'danger' ? 'bg-red-500' : 'bg-amber-500'
+                }`}>
+                  <Lucide.AlertTriangle className="w-2 h-2 text-white" />
+                </span>
+              )}
+            </div>
+          )}
+        </button>
+      )}
     </div>
   );
 };
